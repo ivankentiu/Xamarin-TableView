@@ -12,10 +12,16 @@ namespace listviewapp
         {
             tableItems = new List<string>();
 
-            for (var i = 0; i < 40; i++)
-            {
-                tableItems.Add("Item number " + i.ToString());
-            }
+            //for (var i = 0; i < 40; i++)
+            //{
+            //    tableItems.Add("Item number " + i.ToString());
+            //}
+
+            tableItems.Add("Apple");
+            tableItems.Add("Aardvark");
+            tableItems.Add("Bee");
+            tableItems.Add("Butterfly");
+            tableItems.Add("Zebra");
         }
 
         public override void ViewDidLoad()
