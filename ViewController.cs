@@ -8,8 +8,7 @@ namespace listviewapp
     {
         List<string> tableItems;
 
-        protected ViewController(IntPtr handle) : base(handle)
-        {
+        protected ViewController(IntPtr handle) : base(handle) {
             tableItems = new List<string>();
 
             //for (var i = 0; i < 40; i++)
@@ -24,15 +23,13 @@ namespace listviewapp
             tableItems.Add("Zebra");
         }
 
-        public override void ViewDidLoad()
-        {
+        public override void ViewDidLoad() {
             base.ViewDidLoad();
             // Perform any additional setup after loading the view, typically from a nib.
             tableView.Source = new MyTableViewSource(tableItems);
         }
 
-        public override void DidReceiveMemoryWarning()
-        {
+        public override void DidReceiveMemoryWarning() {
             base.DidReceiveMemoryWarning();
             // Release any cached data, images, etc that aren't in use.
         }

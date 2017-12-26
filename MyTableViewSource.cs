@@ -12,12 +12,10 @@ namespace listviewapp
         Dictionary<string, List<string>> indexedTableItems;
         string[] keys;
 
-        public MyTableViewSource(List<string> _tableItems)
-        {
+        public MyTableViewSource(List<string> _tableItems) {
             tableItems = _tableItems;
             indexedTableItems = new Dictionary<string, List<string>>();
-            foreach (var t in tableItems)
-            {
+            foreach (var t in tableItems) {
                 if (indexedTableItems.ContainsKey(t[0].ToString()))
                     indexedTableItems[t[0].ToString()].Add(t);
                 else
@@ -26,36 +24,29 @@ namespace listviewapp
             keys = indexedTableItems.Keys.ToArray();
         }
 
-        public override nint NumberOfSections(UITableView tableView)
-        {
+        public override nint NumberOfSections(UITableView tableView) {
             return keys.Length;
         }
 
-        public override nint RowsInSection(UITableView tableview, nint section)
-        {
+        public override nint RowsInSection(UITableView tableview, nint section) {
             return indexedTableItems[keys[section]].Count;
         }
 
-        public override string[] SectionIndexTitles(UITableView tableView)
-        {
+        public override string[] SectionIndexTitles(UITableView tableView) {
             return keys;
         }
 
-        public override string TitleForHeader(UITableView tableView, nint section)
-        {
+        public override string TitleForHeader(UITableView tableView, nint section) {
             return keys[section];
         }
 
-        public override string TitleForFooter(UITableView tableView, nint section)
-        {
+        public override string TitleForFooter(UITableView tableView, nint section) {
             return "Section End";
         }
 
-        public override UIView GetViewForHeader(UITableView tableView, nint section)
-        {
+        public override UIView GetViewForHeader(UITableView tableView, nint section) {
             var view = new UIView(new CoreGraphics.CGRect(0, 0, tableView.Bounds.Width, 44f));
-            var label = new UILabel()
-            {
+            var label = new UILabel() {
                 Font = UIFont.FromName("Helvetica", 22f),
                 Frame = new CoreGraphics.CGRect(10, 5, tableView.Bounds.Width, 25),
                 TextColor = UIColor.Red,
@@ -65,11 +56,9 @@ namespace listviewapp
             return view;
         }
 
-        public override UIView GetViewForFooter(UITableView tableView, nint section)
-        {
+        public override UIView GetViewForFooter(UITableView tableView, nint section) {
             var view = new UIView(new CoreGraphics.CGRect(0, 0, tableView.Bounds.Width, 30f));
-            var label = new UILabel()
-            {
+            var label = new UILabel() {
                 Font = UIFont.FromName("Helvetica", 15f),
                 Frame = new CoreGraphics.CGRect(10, 5, tableView.Bounds.Width, 25),
                 TextColor = UIColor.Red,
@@ -79,13 +68,11 @@ namespace listviewapp
             return view;
         }
 
-        public override nfloat GetHeightForHeader(UITableView tableView, nint section)
-        {
+        public override nfloat GetHeightForHeader(UITableView tableView, nint section) {
             return 44f;
         }
 
-        public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
-        {
+        public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath) {
             var cell = tableView.DequeueReusableCell("tableViewCell") as MyCustomCell;
 
             if (cell == null)
@@ -97,13 +84,11 @@ namespace listviewapp
 
 
 
-        public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
-        {
+        public override void RowSelected(UITableView tableView, NSIndexPath indexPath) {
             tableView.DeselectRow(indexPath, true);
         }
 
-        public override nfloat GetHeightForRow(UITableView tableView, NSIndexPath indexPath)
-        {
+        public override nfloat GetHeightForRow(UITableView tableView, NSIndexPath indexPath) {
             return 250f;
         }
     }
